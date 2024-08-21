@@ -10,6 +10,11 @@
 
 </head>
 
+<input type="text" id="todo" placeholder="Enter a todo" onkeypress="addTodo(event)">
+placeholder: a hint to the user of what can be entered into the field
+onkeypress: event that occurs when a key is pressed
+addTodo: function to add a todo
+event: the event object
 
 
 

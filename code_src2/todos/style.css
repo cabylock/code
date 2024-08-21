@@ -1,0 +1,58 @@
+.header
+{  
+      color: black;
+      text-align: center;
+      
+      
+      /* padding: 14px 20px; */
+      /* margin: 0; */
+
+}
+.input
+{
+   width: 250px;
+   padding: 10px;
+   margin: 0px;
+   border: 1px solid black;
+   border-radius: 5px;
+}
+#button
+{  
+   padding: 10px 20px;
+   margin: 1px ;
+   border: 1.5px solid rgb(115, 204, 129);
+   border-radius: 5px;
+   background-color:aqua;
+   color: brown;
+}
+ul {
+   list-style: none;
+   padding: 0;
+ }
+ 
+ li {
+  
+   padding: 10px ;
+   border-radius: 10px;
+   
+ }
+ 
+ .delete {
+   /* margin-left: auto;  */
+   padding: 5px 15px;
+   margin-left: 10px;
+   background-color: #f00; /* Màu đỏ */
+   color: #fff;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+
+
+
+
+
+
+
+
+

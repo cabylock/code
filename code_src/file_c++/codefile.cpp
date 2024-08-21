@@ -1,43 +1,43 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-
-
-void abc(   int m , int n ,    vector<int>& nums1 , vector<int>& nums2 )
-{
-     int a= 0 , b = 0 ;
-        int l = m+n ;
-        while(  l--  )
+int removeDuplicates(vector<int>& nums) 
+    {
+       int j = 0 ;int count = 0; 
+        for( int i =0; i< nums.size(); i++)
         {
+            if( nums[i] != nums[j] || count <2)
+            {
+                
+               
+                if( nums[i] != nums[j])
+                {
+                    count = 1 ;
+                }
+                else 
+                {
+                    count ++ ;
+                }
+                nums[j] = nums[i];
+                 j++;
+
+            }
+             else if( count ==2 )
+            {
+                if( nums[j] != nums[j-1])
+                {
+                    count =1;
+                }
+            }
             
-             if( nums1[a] == 0)
-            {
-                nums1[a] = nums2[b];
-                a++;
-                b++;
-            }
-            else if( nums1[a] > nums2[b])
-            {
-                nums1.insert( nums1.begin() + a  , nums2[b] );
-                a++;b++;
-            }
-            else 
-            {
-                a++;
-            }
-
+            
         }
-        nums1.erase( nums1.begin() + m , nums1.end() );
-        
-}
-
+        return  j;
+    }
 int main()
 {
-    vector<int> nums1 = {1,2,3,0,0,0};
-    vector<int> nums2 = {2,5,6};
-    int m = 3 , n = 3;
-    abc( m , n , nums1 , nums2 );
-
+    vector<int> nums1 = {0,0,1,1,1,1,2,3,3};
+    cout<<removeDuplicates(nums1)<<endl;
 
     
 
