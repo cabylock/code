@@ -1,0 +1,85 @@
+|| int a[10] = {0}; tạo ra mang a co 10 phan tu, moi phan tu co gia tri 0
+    // không dùng với vector
+
+
+#define  pi 3.141592653589793 
+
+|| STRING
+    string a;
+    a.front(); // trả về phần tử đầu tiên của vector
+    a.back(); // trả về phần tử cuối cùng của vector
+
+    a.begin()   // trả về iterator đầu tiên của vector
+    a.end()     // trả về iterator cuối cùng của vector
+    string (5,'0') // tạo chuỗi 5 số 0
+
+    a.erase(0,3) // xóa 3 phần tử từ vị trí 0
+
+
+||      VECTOR
+
+    vector<int> a(5,1); tạo ra vector a có 5 phần tử, mỗi phần tử có giá trị 1
+    vector<int> a(b, b+10); // tạo ra vector a từ mảng b, có 10 phần tử
+    a.push_back(5); // thêm phần tử 5 vào cuối vector a
+    a.pop_back(); // xóa phần tử cuối cùng của vector a
+    a.insert(a.begin() + 3, 5); // chèn phần tử 5 vào vị trí thứ 3 của vector a
+    a.erase(a.begin() + 3); // xóa phần tử thứ 3 của vector a
+    a.erase(a.begin() + 3, a.begin() + 5); // xóa 2 phần tử từ vị trí thứ 3 đến vị trí thứ 4 của vector a
+    a.clear(); // xóa tất cả phần tử của vector a
+    a.size(); // trả về số phần tử của vector a
+    a.empty(); // trả về true nếu vector a rỗng, ngược lại trả về false
+    a.front(); // trả về phần tử đầu tiên của vector a
+    a.back(); // trả về phần tử cuối cùng của vector a
+    a.begin(); // trả về iterator trỏ đến phần tử đầu tiên của vector a
+    a.end(); // trả về iterator trỏ đến phần tử cuối cùng của vector a
+
+
+
+||  (o(logN))    upper_bound(a.begin(), a.end(), value) trả về iterator trỏ đến phần tử đầu tiên  >5
+        // must be sorted if not, the result is undefined
+||  upper_bound(a.begin(), a.end(), 5,[] (int x, int y) {return x < y;}) - a.begin() 
+        // trả về vị trí đầu tiên >5 , có thể viết hàm compare riêng ( xét theo yêu cầu value < y)
+
+||  lower_bound(a.begin(), a.end(), 5) trả về iterator trỏ đến phần tử đầu tiên >= 5
+        // must be sorted if not, the result is undefined
+
+||  lambda function 
+        [] (int x,int y) {cout<< x+y;} (4 ,5)      ; // in ra 9
+        [] : capture list // list of external variables that the lambda function can access
+        (int x,int y) : parameter list
+        {cout<< x+y;} : body
+        (4 ,5) : argument list
+
+    //  int x =5 ;[x] (int y) {cout<< x+y;} (5)      ; // in ra 10
+||  SET
+        set ( 0(logN)) // tự đông sắp xếp, không chứa phần tử trùng lặp
+        set<int> a; // tạo ra set a rỗng
+        set<int> a(b, b+10); // tạo ra set a từ mảng b, có 10 phần tử
+        a.insert(5); // chèn phần tử 5 vào set a
+        a.erase(5); (0(logN)) // xóa phần tử 5 khỏi set a
+        a.find(5); (0(logN)) // trả về iterator trỏ đến phần tử có giá trị 5 trong set a, nếu không có trả về interator a.end()
+        a.lower_bound(5); // trả về iterator trỏ đến phần tử đầu tiên >= 5
+        a.upper_bound(5); // trả về iterator trỏ đến phần tử đầu tiên > 5
+        a.size(); // trả về số phần tử của set a
+        a.empty(); // trả về true nếu set a rỗng, ngược lại trả về false
+        a.clear(); // xóa tất cả phần tử của set a
+        a.count(5); // trả về số lần xuất hiện của phần tử 5 trong set a, nếu không có trả về 0
+        a.begin(); // trả về iterator trỏ đến phần tử đầu tiên của set a
+        a.end(); // trả về iterator trỏ đến phần tử *sau phần tử cuối cùng của set a // nhưng mà chạy vẫn đúng ~_~
+        a.rbegin(); // trả về iterator trỏ đến phần tử cuối cùng của set a
+        a.erase(a.begin()); // xóa phần tử đầu tiên của set a
+        a.erase(a.begin(), a.begin() + 3); // xóa 3 phần tử đầu tiên của set a
+        a.erase(5); // xóa tất cả phần tử có giá trị 5 trong set a
+        a.erase(a.find(5)); // xóa phần tử có giá trị 5 trong set a
+|| multiset<int> ms
+        giống set nhưng có thể chứa phần tử trùng lặp
+        set<int>a ( ms.begin(), ms.end()) // chuyển multiset sang set
+|| unordered_set<int> us 
+        // không sắp xếp     
+    
+
+
+
+
+
+

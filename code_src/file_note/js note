@@ -1,0 +1,72 @@
+
+var let const :
+
+
+var : trong function scope(nếu khai báo trong hàm ) hoặc global scope
+      có thể khai báo nhiều lần trong cùng 1 scope
+      có thể khai báo 1 biến khác cùng tên trong cùng 1 scope
+      var hoisting = undefined
+
+   // var greeting = "hey hi";
+   //  var times = 4;
+
+   //  if (times > 3) {
+   //      var greeting = "say Hello instead"; 
+   //  }
+
+   //  console.log(greeting); //"say Hello instead"
+
+
+
+let : trong block scope (nếu khai báo trong block) hoặc global scope
+   trong mỗi scope chỉ được khai báo 1 lần
+   trong mỗi scope là 1 biến khác cùng tên
+   let hoisting = reference  error
+
+   // let greeting = "say Hi";
+   // let times = 4;
+
+   // if (times > 3) {
+   //      let hello = "say Hello instead";
+   //      console.log(hello); // "say Hello instead"
+   //  }
+   // console.log(hello); // hello is not defined
+
+function types :
+   declearation function :
+      // function abc(a ,b,c )
+      // {
+      //    // có tính hoisting 
+      //    // có argument 
+      // }
+
+   expression function :
+      // var abc = function(a ,b ,c )
+      // {
+      //    // không có tính hoisting
+      //      có argument
+      // }
+
+   arrow function :
+      // var abc = (a ,b ,c ) => {
+      //    // không có tính hoisting
+      //    // có có argument
+            
+      // }
+
+      // var abc = ( ) => x  
+      // var abc  = () => { return x ;} 
+
+
+object.prototype.new_method = ...  // tạo method mới cho object ko dùng được duck.quack = ...
+   //  function duck ()
+   //  {
+
+   //  }
+   //  duck.prototype.quack = function()
+   //  {
+   //    console.log("quack");
+   //  }
+
+
+

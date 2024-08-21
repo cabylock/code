@@ -1,0 +1,8 @@
+dir /s /b | findstr  + name.exe ( dir /s /b | findstr nm.exe  )
+
+
+
+cat + namefile : show content of file
+code + namefile : edit file by vscode
+
+rm -f  + namefile : remove file

@@ -1,0 +1,69 @@
+!!!! 
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Web Page</title>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <script type = "module" src="script.js"></script>
+
+
+</head>
+
+
+
+
+#document
+
+//return the document object
+document.querySelector('h1'): returns the first h1 element in the document
+document.getElemntbyid('id'): returns the element with the specified id
+// return a list 
+document.querySelectorAll('selector'): returns a list of elements that match the specified selector
+document.getElementsByClassName('class'): returns a list of elements that match the specified class
+document.getElementsByTagName('tag'): returns a list of elements that match the specified tag
+document.getElementsByName('name'): returns a list of elements that match the specified name
+
+// api 
+// res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+// res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+// res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+// res.setHeader('Access-Control-Allow-Credentials', true);
+
+method :
+req.on('event' , function to solve this event) : listen for events
+
+'data':
+
+Được kích hoạt khi nhận được một phần dữ liệu từ request body.
+Ví dụ: req.on('data', chunk => { /* xử lý chunk */ });
+
+'end':
+
+Được kích hoạt khi toàn bộ dữ liệu đã được nhận.
+Ví dụ: req.on('end', () => { /* xử lý khi nhận xong dữ liệu */ });
+
+*** nếu request là post mà có header thì sẽ gửi thêm 1 cái option trước khi gửi data 
+
+// header : 
+
+            res.statusCode = 200;
+            res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500'); // '*' : all ( second parameter is the domain that can access the api)
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+            res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+            res.setHeader('Access-Control-Allow-Credentials', true);
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+

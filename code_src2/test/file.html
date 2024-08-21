@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>My web</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <script src="file.js"></script> -->
+</head>
+
+<body>
+
+    <h1>Weather</h1>
+    <h2>Enter the city location</h2>
+    
+  
+    <h1 class ="value"></h1>
+
+    
+    <input type="text" id = "input1" class ="input" onkeyup="f1(event)" >
+    <div></div> 
+    <input type ="text" class ="input" id = 'input2'>
+    
+    <h1 id="value"></h1>
+   
+    <script>
+        function f1()
+    {
+        if(event.key == 'Enter')
+        {   let y =document.getElementById('input1').value;
+            let x =document.getElementById("input1").value ? document.getElementById("input1").value : document.getElementById("input2").value;
+            document.getElementById('value').innerHTML = x;
+        }
+    }
+        
+    </script>
+
+    
+
+</body>
+
+
+
+
+
+
+</html>
+
+
