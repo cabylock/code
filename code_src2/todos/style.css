@@ -58,7 +58,11 @@ ul {
     margin-top: auto;
     cursor: pointer;
 }
-
+#checkbox:checked
+{
+    text-decoration: line-through;
+    color: #ccc;
+}
 
 
 

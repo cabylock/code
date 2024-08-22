@@ -1,105 +1,109 @@
 
-let list= return_todo();
-function return_todo()
+function log( value, checked)  {     
+      let li = document.createElement('li');
+      let ul = document.createElement('ul');
+
+      let  checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id="checkbox";
+
+      let span = document.createElement('span');
+      
+
+      let delete_button = document.createElement('button');
+      delete_button.textContent = 'Delete';
+      delete_button.className = 'delete';
+
+      span.textContent = value;
+      checkbox.checked = checked;
+      if(checked)
+      {
+            li.style.textDecoration = 'line-through';
+      }
+
+      span.onclick = function() // update data
+      {
+            span.contentEditable = true;
+            span.focus();
+            span.onblur = function()
+            {
+            fetch("http://localhost:27018/edit",
+                  {
+                        method: 'POST',
+                        body: JSON.stringify({value: value, new_value: span.textContent}),
+                  }
+                  )
+            console.log(value, span.textContent);
+            value = span.textContent;
+            }
+      }
+
+      checkbox.onclick = function() // update checkbox
+      {
+            fetch("http://localhost:27018/edit",
+            {
+                  method: 'POST',
+                  body: JSON.stringify({ value : value, checked : checkbox.checked, new_value : value}),
+            }
+            )
+            li.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+            checked = checkbox.checked;
+      }
+      delete_button.onclick = function() //delete
+      {
+            fetch("http://localhost:27018/delete",
+                  {
+                        method: 'POST',
+                        body: JSON.stringify({value:value}),
+                  }
+            )
+            li.remove();
+      }
+      li.appendChild(checkbox);
+      li.appendChild(span);
+      li.appendChild(delete_button);
+      document.getElementById('list').appendChild(li);
+}
+
+function api_add(value,checked)
 {
-      let todo = localStorage.getItem("todo");
-      if(todo)
-      {
-            return JSON.parse(todo);
-      }
-      else
-      {
-            return [];
-      }
-
-}
-
-function delete_list(value)
-{
-       list = return_todo();
-      let index = list.findIndex((item) => item.value === value.value);
-    
-      list.splice(index, 1);
-      localStorage.setItem("todo", JSON.stringify(list));
-}
-
-function add_li(value, checked,flag = 1)
-{       
-      
-      
-      var ul = document.getElementById("list"); // lấy thẻ ul
-      
-      var li = document.createElement("li"); // tạo thẻ li
-      var checkbox = document.createElement("input"); // tạo thẻ input
-      checkbox.type = "checkbox"; // tạo checkbox
-      checkbox.id = "checkbox"; // gán id cho thẻ input
-      
-      var span = document.createElement("span"); // tạo thẻ span
-      
-      span.textContent = value; // gán value vào thẻ span
-      const account =
-      {
-            value: value,
-            checked: checked
-      }
-      
-      if( flag) // flag = 1 thì thêm vào list // flag =0 thì là update từ local storage
-     { 
-      list.push(account);
-      }
-      localStorage.setItem("todo", JSON.stringify(list));
-
-      var deleteButton = document.createElement("button"); // tạo thẻ button
-      deleteButton.textContent = "Delete"; // gán value vào thẻ button
-      deleteButton.className = "delete"; // gán id cho th
-    
-        checkbox.onclick = function() { li.style.textDecoration = checkbox.checked ? "line-through" : "none" 
-            account.checked = checkbox.checked;
-            localStorage.setItem("todo", JSON.stringify(list)); // cập nhật trạng thái checked vào local storage
-        } // tạo sự kiện khi click vào checkbox
-           
-        span.onclick = function() { span.contentEditable = "true" 
-                  account.value = span.textContent;
-            } // tạo sự kiện khi click vào span
-            
-            localStorage.setItem("todo", JSON.stringify(list)); // cập nhật value vào local storage
-
-        deleteButton.onclick = function() { li.remove(); delete_list(account)}// tạo sự kiện khi click vào button
-        ul.appendChild(li); // thêm thẻ li vào thẻ ul
-        li.appendChild(checkbox); // thêm thẻ input vào thẻ ul
-        li.appendChild(span); // thêm thẻ span vào thẻ li
-      li.appendChild(deleteButton); // thêm thẻ button vào thẻ ul
-      document.getElementById("input").value="" 
-
-
+      fetch("http://localhost:27018/add",
+            {
+                  method: 'POST',
+                  body: JSON.stringify({value : value, checked : checked}),
+            }
+      )
+      log(value,checked);
+   
+     
 }
 
 
-function press_enter(event) 
-{     
-      let value = document.getElementById("input").value;
-   if(event.key === 'Enter')
-   {  if(value )
-      add_li(value, false);
-   }
+
+function addTodo()
+{     let value = document.getElementById('input').value;
+      let checked = false;
+      if( value )
+      {   api_add(value,checked);
+            }
+      document.getElementById('input').value = '';
 }
 
-function addTodo() 
-{     let value = document.getElementById("input").value;
-      if (value)
-      add_li(value, false);
-}
 
 window.onload = function()
 {
-      let list = return_todo();
-      console.log(list);
-      for(let i = 0; i < list.length; i++)
+      fetch("http://localhost:27018/get")
+      .then( (response) => response.json() )
+      .then( (data) => 
       {
-            add_li(list[i].value, list[i].checked,0);
-      }
+            data.forEach( (element) => 
+            {
+                  log(element.value, element.checked);
+            } 
+            )
+      } 
+      )
 }
-
 
 
 
