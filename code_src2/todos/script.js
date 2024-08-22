@@ -33,7 +33,7 @@ function log( value, checked)  {
                         body: JSON.stringify({value: value, new_value: span.textContent}),
                   }
                   )
-            console.log(value, span.textContent);
+            
             value = span.textContent;
             }
       }
@@ -87,6 +87,13 @@ function addTodo()
       {   api_add(value,checked);
             }
       document.getElementById('input').value = '';
+}
+function press_enter(event)
+{
+      if(event.keyCode == 13)
+      {
+            addTodo();
+      }
 }
 
 
