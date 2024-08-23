@@ -14,6 +14,7 @@
     string (5,'0') // tạo chuỗi 5 số 0
 
     a.erase(0,3) // xóa 3 phần tử từ vị trí 0
+    getline(cin, a); // nhập chuỗi từ bàn phím
 
 
 ||      VECTOR
@@ -77,6 +78,19 @@
 || unordered_set<int> us 
         // không sắp xếp     
     
+|| map 
+        map<int, int> a; // tạo ra map a rỗng
+        map<int, int> a(b, b+10); // tạo ra map a từ mảng b, có 10 phần tử
+        a.insert(make_pair(5, 10)); // chèn cặp giá trị (5, 10) vào map a
+        a.erase(5); // xóa cặp giá trị có key = 5 khỏi map a
+        a.find(5); // trả về iterator trỏ đến cặp giá trị có key = 5 trong map a, nếu không có trả về interator a.end()
+        a.size(); // trả về số cặp giá trị của map a
+        a.empty(); // trả về true nếu map a rỗng, ngược lại trả về false
+        a.clear(); // xóa tất cả cặp giá trị của map a
+        for(auto i : a) cout<<i.first<<" "<<i.second<<endl; // duyệt qua tất cả cặp giá trị trong map a
+        for(auto i = a.begin ; i!=a.end() ; i++) cout<<i->first<<" "<<i->second<<endl; // duyệt qua tất cả cặp giá trị trong map a
+
+
 
 
 
