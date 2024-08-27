@@ -1,1 +1,0 @@
-{"name":"Local: codefile","url":"c:\\Users\\Admin\\Desktop\\File VScode\\file_coder\\file c++\\codefile.cpp","tests":[{"id":1717853072315,"input":"8 5\n2 3 3 5 5 7 7 9\n9\n5\n2\n5\n3\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\Desktop\\File VScode\\file_coder\\file c++\\codefile.cpp","group":"local","local":true}

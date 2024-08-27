@@ -1,1 +1,0 @@
-{"name":"Local: codefile","url":"c:\\Users\\Administrator\\Desktop\\software\\code\\code_src\\file_c++\\codefile.cpp","tests":[{"id":1724403564817,"input":"3\nabc b abc\n","output":"abc"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Administrator\\Desktop\\software\\code\\code_src\\file_c++\\codefile.cpp","group":"local","local":true}
