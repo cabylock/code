@@ -78,8 +78,6 @@ function api_add(value,checked)
      
 }
 
-
-
 function addTodo()
 {     let value = document.getElementById('input').value;
       let checked = false;
