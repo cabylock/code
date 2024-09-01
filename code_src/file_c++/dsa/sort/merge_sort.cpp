@@ -51,15 +51,20 @@ void merge_sort(int a[], int l, int r)
    if(l < r)
    {
       int m = (l+r)/2;
-      merge_sort(a,l,m);
       merge_sort(a,m+1,r);
-      merge(a,l,m,r);
+      merge_sort(a,l,m);
+      // [l, m] [m+1, r] đã được sắp xếp
+      merge(a,l,m,r); //=> trộn 2 mảng đã sắp xếp
    }
 }
 int main()
 {
    int a[10]= { 1 ,4 ,5 ,6 ,9 ,205 ,1 ,4 ,2,10};
    merge_sort(a,0,9);
+   for( auto i : a )
+   {
+      cout<< i<<" ";
+   }
 
 }
 
