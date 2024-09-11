@@ -1,16 +1,23 @@
-
-#include "add.h"
-
+#include<stdio.h>
 
 
-int value ;
+
+struct abc 
+{
+    int x;
+    
+} 
+
+
+
 
 
 int main( void)
 {   
+    struct abc abc2;
+    abc2.x =5 ;
+
     
-    scanf("%d",&value); 
-    abc();
     
     
 }

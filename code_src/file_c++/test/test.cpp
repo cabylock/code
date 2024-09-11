@@ -1,42 +1,24 @@
 #include<iostream>
-using namespace std;
-
+using namespace std; 
 int main()
-{  int l = 4;
-   int r=4 ; 
-   int a[4] ={ 1, 2, 4,6};
-   int b[4]= { 3,5,8,9};
+{
+   
+   int n; cin >> n;
 
-   int i = 0; int j =0;
-   while( i< l || j<r)
-   {  
-      
-      if( i>=l)
-      {
-         cout<<b[j]<<" ";
-         j++;
-      }
-      else if ( j>=r)
-      {
-         cout<<a[i]<<" ";
-         i++;
-      }
-      else 
-      {
-
-         if(a[i] < b[j])
-         {
-            cout<<a[i]<<" ";
-            i++;
-         }
-         else
-         {
-            cout<<b[j]<<" ";
-            j++;
-         }
-      }
+   int a[n];
+   for( int i = 0 ; i< n; i++)
+   {
+    cin >>  a[i];
    }
-
-
-
+   for( int i = 1 ; i<= ( 1<< n); i++)
+   {
+    for( int j =0 ; j< n; j++)
+    {
+      if( i & (1 << j ))
+      {
+        cout<< a[j] <<" "; 
+      }
+    }
+    cout<<"\n";
+   }
 }
