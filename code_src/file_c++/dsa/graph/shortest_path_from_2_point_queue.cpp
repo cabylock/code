@@ -6,7 +6,8 @@ using namespace std;
 
 int dx[4]= {-1, 0 , 0 ,1};
 int dy[4] ={ 0 ,-1 , 1 , 0};
-
+// cho ma trận gồm 1 và 0 , 1 là đường đi được , 0 là không đi được
+// tìm đường đi ngắn nhất từ 1 điểm đến 1 điểm khác
 int main()
 {   int m,n ; cin >> m>> n ; //size mảng 
     int startx, starty, desx,desy; // điểm bắt đầu và kết thúc
