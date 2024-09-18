@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #include<vector>
 using namespace std;
+// Complete the reverseArray function below.
 vector<int> reverseArray(vector<int> a) 
 {
       vector<int> b;
