@@ -2,6 +2,7 @@
 #include<math.h>
 using namespace std;
 
+// cho x ,n đếm xem có bao nhiêu cách biểu diễn x = a1^n + a2^n + ... + ak^n
 int solution(int x, int n, int maxpow)
 {     int count = 0 ;
       for(int i = maxpow;  i >0; i--)
