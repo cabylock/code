@@ -1,4 +1,6 @@
 
+package recursion;
+
 import java.util.*;
 
 // nối chuỗi n lần k rồi tính tổng các chữ số của chuỗi đó cho đến khi chỉ còn 1 chữ số
