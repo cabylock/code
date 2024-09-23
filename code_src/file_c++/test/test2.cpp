@@ -4,8 +4,9 @@ using namespace std;
 
 int main()
 {
-   string a= "abc";
-   cout<< a.substr(0,1) << endl;
+  string a[100];
+  a[0] ="1";
+  cout<< a[0].empty();
 
 
 
