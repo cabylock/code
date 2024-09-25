@@ -28,7 +28,7 @@ int check_cycle_dfs(int u, int parent)
 
 int check_cycle_bfs(int u )
 {  
-   
+   int start ;
    int parent[100] ={0};
    queue<int> q;
    q.push(u);
@@ -46,7 +46,7 @@ int check_cycle_bfs(int u )
          }
          else if(i != parent[x])
          {   
-            cout<< x<< i<< parent[x]<<" ";
+            
             return 1 ;
          }
       }
