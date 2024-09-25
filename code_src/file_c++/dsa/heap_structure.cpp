@@ -44,7 +44,7 @@ int main()
        heapify_up(a, n, i);
    }
    for ( int i = n/2 -1 ; i >= 0 ; i--)
-   {
+   {  //i=n/2-1:node cha cuối cùng  
       heapify_down(a, n, i);
    }
 
