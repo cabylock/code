@@ -9,6 +9,6 @@ int main()
   cout<< a[0].empty();
 
 
-
+  return 0 ; 
 
 }
