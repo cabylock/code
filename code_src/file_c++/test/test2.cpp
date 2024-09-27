@@ -1,12 +1,14 @@
 #include<iostream>
 #include<map>
+#include<vector>
 using namespace std;
 
 int main()
 {
-  string a[100];
-  a[0] ="1";
-  cout<< a[0].empty();
+
+    vector<pair<int,int>> v = {{1,2},{3,4},{5,6},{7,8}};
+
+    cout<< v[2].first ; 
 
 
   return 0 ; 
