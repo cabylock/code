@@ -1,30 +1,61 @@
 #include<iostream>
-#include<queue>
-#include<map>
-#include<vector>
-#include<set>
-#include<cstring>
+using namespace std; 
 
-#include<bits/stdc++.h>
-using namespace std;
-
-
-struct linked_list
+int partrition ( int a[], int l , int r )
 {
-    int data;
-    linked_list* next;
-};
+    //lomuto 
+    int value_pivot = a[r];
+    int i = 0 , j = 0 ; 
+    for( int j = 0 ; j< r; j++) 
+    {
+        if( a[j] >= value_pivot      )
+        {
+            swap(a[i], a[j]) ; 
+            // for( int k = l; k <=r ; k++)
+            // {
+            //     cout<< a[k]<<" ";
+            // }
+            i++ ; 
+        }
+
+
+    }
+    swap ( a[i] , a[r]) ; 
+    return i ; 
+
+
+
+}
+
+void quicksort(int a[], int l , int r )
+{
+    if(l < r )
+    {
+        int pivot = partrition( a, l, r );
+       
+        quicksort(a, l, pivot-1 );
+        quicksort(a, pivot+1, r ); 
+
+
+    }
+}
+
 
 
 int main()
-{   
-  
-      linked_list* head ;
-      head = new linked_list;
-      if(head != NULL)
-      {
-          cout<<"Memory not allocated";
-          return 0;
-      }
-   
+{
+    int n ;cin >> n ;
+
+    int arr[n] ;
+    for(int i = 0 ; i < n ; i++)
+    {
+        cin >> arr[i] ;
+    }
+
+    quicksort(arr, 0, n -1 );
+    for( auto i : arr )
+    {
+        cout << i <<" "; 
+    }
+    
 }
