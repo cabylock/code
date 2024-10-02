@@ -5,24 +5,17 @@ int partrition ( int a[], int l , int r )
 {
     //lomuto 
     int value_pivot = a[r];
-    int i = 0 , j = 0 ; 
-    for( int j = 0 ; j< r; j++) 
+    int i = 0 ; 
+    for(int j= 0 ; j< r;  j++)
     {
-        if( a[j] >= value_pivot      )
+        if( a[j] <= value_pivot)
         {
-            swap(a[i], a[j]) ; 
-            // for( int k = l; k <=r ; k++)
-            // {
-            //     cout<< a[k]<<" ";
-            // }
-            i++ ; 
+            swap(a[j], a[i]);
+            i++;
         }
-
-
     }
-    swap ( a[i] , a[r]) ; 
+    swap(a[i], a[r]);
     return i ; 
-
 
 
 }
