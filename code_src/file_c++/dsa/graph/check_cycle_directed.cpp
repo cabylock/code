@@ -29,7 +29,7 @@ int check_cycle_dfs(int u, int parent)
 int check_cycle_bfs(int u )
 {  
    int start ;
-   int parent[100] ={0};
+   int parent[100] ={0};// lưu node cha 
    queue<int> q;
    q.push(u);
    visited_bfs[u] = 1 ;
@@ -37,14 +37,14 @@ int check_cycle_bfs(int u )
    {
       int x =q.front(); q.pop();
       for(auto i : adj[x])
-      {
-         if(!visited_bfs[i])
+      {     //parent[x] -> x -> i 
+         if(!visited_bfs[i]) // node chưa xét -> thêm vào quueu 
          {
             q.push(i);
             visited_bfs[i] = 1; 
             parent[i] = x;
          }
-         else if(i != parent[x])
+         else if(i != parent[x]) // node xét rồi mà không phải parent -> chu trình  
          {   
             
             return 1 ;
@@ -78,6 +78,7 @@ int main()
    //    if(visited[i] == 0 )
    //    {
    //       cout<< check_cycle(i,0) <<endl ;
+            
    //    }
    // }
 
