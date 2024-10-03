@@ -1,23 +1,18 @@
 #include<iostream>
 #include<string> 
 using namespace std ; 
-int main()
-{    
-  int t ;cin >> t; 
-  while( t --)
-  {
-    int n1,n2,time ; 
-    cin >> n1 >> n2 >>time ; 
-    string a; string b; 
-    cin >> a >> b; 
-    char res[n1+n2]; 
+
+
+void solve( int n1, int n2 , string a, string b, int time )
+{
+  char res[n1+n2]={0}; 
    
     for(int i = 0 ; i< n2 ; i++)
     {
       if(time -i>0)
       { 
         int step = time - i ; 
-        if( n1 - i -step  < 0 )
+        if( n1 + i -step  < i )
         {
           res[i]  = b[i];
         }
@@ -30,11 +25,11 @@ int main()
       }
     }
     for(int i = 0 ; i< n1 ; i++)
-    {
+    { 
       if( time - i > 0)
       {
         int step = time -i ; 
-        if( n1- i-1 +step  < n1 +n2   )
+        if( n1- i-1 +step  < n1 +n2 -1 -i   )
         {
           res[n1 - i -1 +step]  = a[i];
         }
@@ -52,14 +47,18 @@ int main()
     }
     cout<< endl; 
 
+}
 
+int main()
+{    
+  int n1, n2 , t; 
+  string a, b; 
+  while( cin >> n1 >> n2 >> t )
+  {
+    cin >> a >> b ;
     
-    
-
-
-
-
+    solve(n1 , n2 , a, b, t );
   }
-
+    
 
 }
