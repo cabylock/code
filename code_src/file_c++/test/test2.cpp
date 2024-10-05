@@ -1,64 +1,61 @@
 #include<iostream>
-#include<string> 
-using namespace std ; 
+#include<vector>
+#include<stack>
+using namespace std; 
 
-
-void solve( int n1, int n2 , string a, string b, int time )
-{
-  char res[n1+n2]={0}; 
+int andXorOr(vector<int> a) {
+    // = ( m1 xor m2) ; 
+    // 100 + 011  -> a xor b max
+   int res = 0 ; 
+   stack<int> st; st.push(a[0]) ; 
    
-    for(int i = 0 ; i< n2 ; i++)
-    {
-      if(time -i>0)
-      { 
-        int step = time - i ; 
-        if( n1 + i -step  < i )
-        {
-          res[i]  = b[i];
-        }
-        else
-        res[n1+ i -step ] = b[i];
-      }
-      else 
-      {
-        res[n1 + i]=b[i];
-      }
-    }
-    for(int i = 0 ; i< n1 ; i++)
-    { 
-      if( time - i > 0)
-      {
-        int step = time -i ; 
-        if( n1- i-1 +step  < n1 +n2 -1 -i   )
-        {
-          res[n1 - i -1 +step]  = a[i];
-        }
-        else 
-        res[n1 +n2 -i -1] = a[i];
-      }
-      else 
-      {
-        res[n1-i-1 ]  =a[i];
-      }
-    }
-    for(int i = 0 ; i< n1+n2 ; i++)
-    {
-      cout<< res[i] ;
-    }
-    cout<< endl; 
-
+   for(int i = 1 ; i< a.size() ; i++)
+   {
+       if( a[i] > a[i-1])
+       {   cout<< a[i-1] << " " << a[i] <<" " << (a[i] ^ a[i-1] ) << endl;
+           res =max(res, a[i] ^ a[i-1]);
+       }
+       else 
+       {   
+           if( a[i]<st.top())
+           {
+           
+            int j  =  i-1 ; 
+           do  { cout<< a[j] << " " << a[i] <<" " << (a[j] ^ a[i] ) << endl;
+                res = max(res, a[j] ^ a[i]);
+                j--;
+            }
+            while( j >= 0 && a[j] != st.top());
+            st.push(a[i]);
+           }
+           else 
+           {
+            int j = i-1 ;
+            do  {
+             cout<< a[j] << " " << a[i] <<" " << (a[j] ^ a[i] ) << endl;
+                res = max(res, a[i] ^ a[j]);
+                j--;
+            }
+            while( a[i] < a[j] && j >= 0);
+           }
+           
+           
+       }
+   }
+   return res ;
 }
 
+
 int main()
-{    
-  int n1, n2 , t; 
-  string a, b; 
-  while( cin >> n1 >> n2 >> t )
+{
+
+
+  int n ;cin >> n; 
+  vector<int> a(n);
+  for(int i = 0 ; i < n ; i++)
   {
-    cin >> a >> b ;
-    
-    solve(n1 , n2 , a, b, t );
+    cin >> a[i];
   }
-    
+  cout<<andXorOr(a);
 
 }
