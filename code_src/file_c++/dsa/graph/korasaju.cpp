@@ -15,7 +15,7 @@ stack<int> st; // lưu thứ tự đỉnh được duyệt xong trước
                // sắp xếp topo
 
 void dfs1(int x )
-{
+{  
    visited[x]  =1; 
    for( int i : adj[x])
    {
