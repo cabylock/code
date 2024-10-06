@@ -16,32 +16,12 @@ int andXorOr(vector<int> a) {
            res =max(res, a[i] ^ a[i-1]);
        }
        else 
-       {   
-           if( a[i]<st.top())
-           {
-           
-            int j  =  i-1 ; 
-           do  { cout<< a[j] << " " << a[i] <<" " << (a[j] ^ a[i] ) << endl;
-                res = max(res, a[j] ^ a[i]);
-                j--;
-            }
-            while( j >= 0 && a[j] != st.top());
-            st.push(a[i]);
-           }
-           else 
-           {
-            int j = i-1 ;
-            do  {
-             cout<< a[j] << " " << a[i] <<" " << (a[j] ^ a[i] ) << endl;
-                res = max(res, a[i] ^ a[j]);
-                j--;
-            }
-            while( a[i] < a[j] && j >= 0);
-           }
-           
-           
+       {
+        // a[i] < a[i-1]
+         
        }
-   }
+    }
+
    return res ;
 }
 
