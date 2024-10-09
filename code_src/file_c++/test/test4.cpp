@@ -1,12 +1,11 @@
 #include<iostream>
-using namespace std;
 
+using namespace std;
+int n = 0 ; 
 
 int main()
 {
-
+   
  
-   string s; 
-   getline(cin, s);
-   cout<< s;
+   
 }
