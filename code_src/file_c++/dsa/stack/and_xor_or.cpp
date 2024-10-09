@@ -15,7 +15,7 @@ int main()
       {
          cin>>a[i];
       }
-      stack<int> st; 
+      stack<int> st; // giá trị trong stack luôn giảm dần
       int res = 0;
       for(int i = 0 ; i< n ; i++)
       {

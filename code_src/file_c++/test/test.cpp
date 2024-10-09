@@ -1,54 +1,87 @@
 #include<iostream>
-using namespace std; 
+using namespace std;
 
-int partrition ( int a[], int l , int r )
+struct node 
 {
-    //lomuto 
-    int value_pivot = a[r];
-    int i = 0 ; 
-    for(int j= 0 ; j< r;  j++)
-    {
-        if( a[j] <= value_pivot)
-        {
-            swap(a[j], a[i]);
-            i++;
-        }
-    }
-    swap(a[i], a[r]);
-    return i ; 
+    int data ; 
+    node* next; 
+};
 
-
-}
-
-void quicksort(int a[], int l , int r )
+class list_node 
 {
-    if(l < r )
+    public: 
+        node * head ; 
+    list_node()
     {
-        int pivot = partrition( a, l, r );
-       
-        quicksort(a, l, pivot-1 );
-        quicksort(a, pivot+1, r ); 
-
-
-    }
-}
-
-
-
-int main()
-{
-    int n ;cin >> n ;
-
-    int arr[n] ;
-    for(int i = 0 ; i < n ; i++)
-    {
-        cin >> arr[i] ;
-    }
-
-    quicksort(arr, 0, n -1 );
-    for( auto i : arr )
-    {
-        cout << i <<" "; 
+        head =new node ; 
+        head -> next =NULL ;
     }
     
+    void insert(int x )
+    {
+        node * p  = head ; 
+        while( p ->next  != NULL)
+        {
+            p = p->next;
+        }
+        node * a = new node ;
+        a-> data =x; 
+       a->next = NULL;
+       p->next  =a ; 
+    }
+
+
+    int search(int x )
+    {   
+        int pos = 0 ; 
+        node * p = head ; 
+        while( p != NULL )
+        {
+            if( p-> data == x)
+            {
+                return pos ; 
+            }
+            p= p->next; 
+            pos++ ;
+        }
+        return false; 
+    }
+    void print_list()
+    {
+        node *p = head; 
+        while( p!= NULL)
+        {
+            cout<< p->data << " ";
+            p=p->next;
+        }
+    }
+    int get_val(int x ) 
+    {   
+        node* p = head; 
+        while( x --)
+        {
+            if( p != NULL)
+            {
+                p = p->next;
+            }
+            else 
+            {
+                cout<< "empty";
+            }
+        }
+        return p->data; ; 
+    }
+
+};
+
+int main()
+{   
+
+    list_node a ; 
+    a.insert(5); 
+    a.insert(6) ;
+    a.print_list();
+    cout<< endl ;
+    cout<< a.search(5) ;
+
 }
