@@ -9,8 +9,9 @@ struct node
 
 class list_node 
 {
-    public: 
+    private: 
         node * head ; 
+    public: 
     list_node()
     {
         head =new node ; 
@@ -69,6 +70,7 @@ class list_node
     void print_list()
     {
         node *p = head; 
+        
         while( p!= NULL)
         {
             cout<< p->data << " ";
