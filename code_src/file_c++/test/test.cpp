@@ -19,7 +19,36 @@ class list_node
         head -> next =NULL ;
         //head = NULL; 
     }
-    
+    void erase_tail()
+    {
+         node * p  = head ; 
+         if( p->next == NULL)
+         {
+            cout<< "empty";
+            return ; 
+         }
+        while( p ->next->next != NULL)
+        {
+            p = p->next;
+        }
+        p->next = NULL;
+    }
+
+    void erase(int index)
+    {
+        node * p = head ; 
+       index -- ;
+       while(index -- )
+       {
+          if( p == NULL)
+          {
+            return ; 
+          }
+          p = p ->next;
+       }
+       p->next =p->next ->next;
+    }
+
     void insert_tail(int x )
     {
         node * p  = head ; 
@@ -104,6 +133,7 @@ int main()
     a.insert_tail(5); 
     a.insert_tail(6) ;
     a.insert(7, 1);
+    a.erase_tail();
     a.print_list();
     cout<< endl ;
     cout<< a.get_val(2) ;
