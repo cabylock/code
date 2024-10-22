@@ -180,8 +180,7 @@ int main()
    a.insert_head(4);
    
 
-   a.delete_head();
-   a.is_empty();
+   a.search(8 );
    a.print_();
 
 }
