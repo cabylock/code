@@ -80,7 +80,7 @@ void selection_sort ( int a[], int n )
 
 void merge(int a[], int l , int p , int r )
 {
-   int n1 = p-l ; int n2 = r- p+1 ;
+   int n1 = p-l+1 ; int n2 = r- p ;
    int left[ n1] ;
    int right [n2 ];
 
@@ -90,7 +90,7 @@ void merge(int a[], int l , int p , int r )
    }
    for ( int i = 0; i <n2 ; i ++)
    {
-      right[i] = a[i + p ] ;
+      right[i] = a[i + p +1] ;
    }
    
    int i = 0 ; int j = 0 ;
@@ -141,7 +141,7 @@ int  lomuto( int a[], int l , int r )
 {
    int key = a[r]; 
    int i = 0 ; int j = 0 ;
-   while(j <= r  )
+   while(j < r  )
    {  
       if( a[j] < key )
       {
@@ -152,8 +152,11 @@ int  lomuto( int a[], int l , int r )
       }
       j ++ ; 
    }
+   int temp = a[i]; 
+   a[i] = key ; 
+   a[r] =temp ;
    
-   return i-1 ; 
+   return i; 
 }
 
 void quick_sort( int a[], int l , int r )
@@ -162,7 +165,7 @@ void quick_sort( int a[], int l , int r )
    {
       int p = lomuto( a, l , r );
       
-      quick_sort( a, l , p ); 
+      quick_sort( a, l , p-1); 
       quick_sort(a, p+1, r ); 
    }
    if( l == 0 && r == n-1)
@@ -174,6 +177,8 @@ void quick_sort( int a[], int l , int r )
       cout << endl ; 
    }
 }
+
+
 
 int main()
 {
@@ -191,15 +196,16 @@ int main()
    cout <<"bubble_sort " ; bubble_sort( temp,n );
 
    copy_array(a,temp, n); 
-   cout << "select_sort "; selection_sort( a,n) ;
+   cout << "select_sort "; selection_sort( temp,n) ;
 
    copy_array(a, temp , n ); 
-   cout <<" merge_sort "; merge_sort(a,0, n-1);
+   cout <<" merge_sort "; merge_sort(temp,0, n-1);
 
    copy_array( a , temp , n );
-   cout << " quick_sort " ; quick_sort( a, 0 , n-1 ); 
+   cout << " quick_sort " ; quick_sort( temp, 0 , n-1 ); 
 
-
+   copy_array( a, temp , n ); 
+   cout << " radix_sort "; 
 
 
 }
