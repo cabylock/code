@@ -48,26 +48,26 @@ node* rotate(node * root,int data)
    // balance = left -right 
    int balance = height(root->left) - height(root->right);
    //left left
-   if(balance >1  && data < root->left->data)
+   if(balance >1  && height(root->left->left) >= height(root->left->right))
    {
       return right_rotate(root);
    }
    //right right
 
-   if( balance <-1 && data >root ->right->data)
+   if( balance <-1 && height ( root ->right ->right ) >= height(root->right->left))
    {
       return left_rotate(root);
    }
 
    //left right
-   if( balance >1  && data >root->left->data)
+   if( balance >1  && height(root->left->right)  > height(root->left->left)  )
    {
      root->left= left_rotate(root->left);
        return right_rotate(root);
    }
 
    // right left 
-   if( balance <-1 && data < root->right->data)
+   if( balance <-1 &&height ( root ->right ->right ) < height(root->right->left))
    {
       root->right = right_rotate(root->right);
       return left_rotate(root);
