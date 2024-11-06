@@ -4,30 +4,32 @@ using namespace std;
 struct llist
 {   
     string Name ; 
+    int id; 
     string Class ; 
     llist * next; 
 
 };
 
-llist* student[10000] = { NULL };
+llist* student[10000] = { nullptr };
 
 
 
 
-int hash_function(int data)
+int hash_function(int id)
 {
-    return data% 10000; 
+    return id% 10000; 
 }
 
 void insert(  int id , string Name , string Class  )
 {
     int hash_key = hash_function(id); 
 
-    if( student[hash_key]  == NULL)
+    if( student[hash_key]  == nullptr)
     {
         llist * temp  = new llist ; 
         temp ->Class =Class; 
         temp -> Name= Name; 
+        temp->id = id; 
         temp ->next = NULL ; 
         student[hash_key]= temp ;
 
@@ -36,7 +38,8 @@ void insert(  int id , string Name , string Class  )
     {
          llist * temp  = new llist ; 
         temp ->Class =Class; 
-        temp -> Name= Name; 
+        temp -> Name= Name;
+        temp->id = id;  
         temp ->next = student[hash_key] ;
         student[hash_key] = temp ;  
     }
@@ -45,21 +48,49 @@ void insert(  int id , string Name , string Class  )
 
 void infor(int id)
 {   
-    if( student[hash_function(id)] == NULL)
+    llist * temp = student[hash_function(id)]; 
+    while( temp != nullptr && temp->id != id  )
+    {
+        temp =temp->next;
+    }
+    if( temp == nullptr)
     {
         
         cout<<"NA,NA"<<endl;
         return; 
     }
-    cout<< student[hash_function(id)]->Name<<","
-    <<student[hash_function(id)]->Class<<endl;
-
+    else 
+    {
+        cout << temp->Name<<","<<temp->Class<<endl; 
+    }
 }
 
 void Delete(int id)
 {
-    student[hash_function(id)]= student[hash_function(id)]->next; 
-    
+    llist *temp = student[hash_function(id)];
+    if (temp == NULL)
+    {
+        return ;
+    }
+    if (temp->id == id)
+    {
+        student[hash_function(id)] = temp->next;
+    }
+    else 
+    {
+        while (temp->next != NULL && temp->next->id != id)
+        {
+            temp = temp->next; 
+        }
+        if (temp->next == NULL)
+        {
+            temp = temp->next; 
+        }
+        else 
+        {
+            temp->next = temp->next->next ;
+        }
+    }
 }
 
 int main()
@@ -69,14 +100,12 @@ int main()
     insert(2,"Vinh","K43C"); 
 
     infor(3);
-
-    insert(10001,"Vinh","jfjfjfj"); 
-
+    
     infor(2);
-
     Delete(2);
     infor(2);
-    infor(1);
+   
+    
 
 }
 
