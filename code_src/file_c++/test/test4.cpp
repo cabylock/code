@@ -1,96 +1,120 @@
 #include<iostream>
-
 using namespace std; 
 
-int n = 0 ; int a[100]; 
-
-void swim_up ( int index)
+class heap
 {
-	if( index == 0)
+	private: 
+		int data[100];
+		int n  = 0 ; 
+
+	public: 
+
+	int len()
 	{
-		return;
+		return  n ; 
+
 	}
-	if( a[index] < a[(index-1)/2] ) 
+	void swim(int index)
 	{
-		int temp = a[index]; 
-		a[index] = a[(index-1)/2] ;
-		a[(index-1)/2] = temp ;
-		swim_up((index-1)/2);
-	}
-
-}
-
-void insert(int data)
-{	
-	a[n++] = data; 
-	swim_up(n-1); 
-}
-
-void sink_down(int index)
-{
-	int left= 2*index+1; 
-	int right = 2*index +2; 
-	int min_i = index;
-	if( left <n)
-	{
-		if( a[min_i] > a[left])
+		if( index  == 0)
 		{
-			min_i = left; 
+			return ; 
+		}
+		else 
+		{
+			int parent = (index -1)/2 ;
+			if( data[parent] > data[index])
+			{
+				swap( data[parent], data[index]); 
+			}
+
+			swim( parent); 
+
 		}
 	}
-	if( right < n )
+
+	void sink( int index)
 	{
-		if( a[min_i] > a[right ])
+		int left = 2 * index +1; 
+		int right = 2 * index + 2 ; 
+		int index_min = index; 
+		if( left < n  && data[left] < data[index_min])
 		{
-			min_i = right ; 
+			index_min = left;
 		}
+		if( right < n  && data[right]< data[index_min] )
+		{
+			index_min =right; 
+		}
+		if( index_min != index)
+		{
+			swap(data[index], data[index_min]); 
+			sink(index_min); 
+		}
+		
+	
 	}
-	if( min_i != index)
+
+	void add(int val)
 	{
-		int temp  =a[index] ; 
-		a[index] = a[min_i] ; 
-		a[min_i] = temp ;
-		sink_down(min_i) ; 
+		data[n++] = val ; 
+		swim(n-1) ;
 	}
 
+	void erase()
+	{
+		if( n == 0)
+		{
+			cout <<"empty! "; 
+			 return ;
+		}
+		swap( data[0], data[--n]); 
+		
+		sink(0); 
+	}
+
+	void print_() {
+    for (int i = 0; i < n; i++) {
+        cout << data[i] << " ";
+    }
+    cout << endl;
 }
 
-void erase()
-{	
-	int temp = a[n-1] ; 
-	a[n-1] =a[0]; 
-	a[0] = temp ; 
+};
 
-	n -- ; 
-	sink_down(0); 
-}
-
-
-void heapsort()
+class graph : heap
 {
-	while( n>0 )
-	{
-		cout << a[0] <<" "; 
-		erase() ; 
-	}
+	// Add graph-related members and methods here
+	public:
+		int x; int y; 
+	
+
+};
+
+int adj[100][100];
+
+
+int dijkstra(int start, int destination)
+{
 
 }
+
 
 
 int main()
 {
-	 insert(95);
-    insert(61);
-    insert(83);
-    insert(53);
-    insert(39);
-    insert(72);
-    insert(16);
-    insert(24);
-    insert(48);
-	 
-	 erase();
-	heapsort();
-}
+	int v,e; cin >> v >> e; 
+	for ( int i = 0 ; i< e ; i++)
+	{
+		int x,  y ,  z; 
+		cin >> x >> y >> z; 
+		adj[x][y]= z;
+		adj[y][x]= z; 
+		
+	}
+	
 
+
+
+}
 
