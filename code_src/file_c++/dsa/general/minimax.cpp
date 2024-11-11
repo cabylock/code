@@ -69,7 +69,7 @@ int check( vector<vector<char>> board )
       {
          return 1;
       }
-      else 
+      else if( board[0][2] == 'o')
       {
          return -1;
       }
@@ -159,7 +159,11 @@ void findBestMove( vector<vector<char>> board, int player)
       cout<<"Player 2-> o win"<<endl;
       return ;
    }
-   if(isMovesLeft(board) == false) return ;
+   if(isMovesLeft(board) == false) 
+   {
+      cout<<"Hòa"<<endl;
+      return ;
+   }
    if(player ==1 )
    {
       int bestVal = INT_MIN;
