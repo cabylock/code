@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std; 
 
-
+int running = 1;
 void printBoard( vector<vector<char>> board)
 {
    for( int i = 0 ; i< 3 ; i++)
@@ -147,22 +147,22 @@ int minimax ( vector<vector<char>> board, int player )
 }
 
 
-void findBestMove( vector<vector<char>> board, int player)
+void findBestMove( vector<vector<char>> &board, int player)
 {  
    if(check(board) == 1)
    {
-      cout<<"Player 1-> x win"<<endl;
-      return ;
+      cout<<"Player 1-> x win"<<endl; running = 0;
+      return  ;
    }
    if(check(board) == -1)
    {
-      cout<<"Player 2-> o win"<<endl;
-      return ;
+      cout<<"Player 2-> o win"<<endl; running = 0;
+      return  ;
    }
    if(isMovesLeft(board) == false) 
    {
-      cout<<"Hòa"<<endl;
-      return ;
+      cout<<"Hòa"<<endl; running = 0;
+      return  ;
    }
    if(player ==1 )
    {
@@ -191,7 +191,7 @@ void findBestMove( vector<vector<char>> board, int player)
       printBoard(board);
       findBestMove(board, -player);
    }
-   else 
+   /* else 
    {
       int bestVal = INT_MAX;
       pair<int,int> bestMove;
@@ -218,7 +218,8 @@ void findBestMove( vector<vector<char>> board, int player)
       printBoard(board);
       findBestMove(board, -player);
    }
-
+   */
+   
 }
 
 
@@ -227,21 +228,32 @@ int main()
 {
 
       vector<vector<char>> board ; 
-      for(int i =  0 ; i< 3 ; i++)
+      for( int i = 0 ; i< 3 ; i++)
       {
          vector<char> temp;
          for( int j = 0 ; j< 3 ; j++)
          {
-            char x;
-            cin>>x;
-            temp.push_back(x);
+            temp.push_back('_');
          }
          board.push_back(temp);
       }
 
-      int player = 1;// x chơi trước 
-      findBestMove(board, player);
-      
 
+      while(true )
+      {
+         findBestMove(board, 1);
+         if( running == 0) break;
+         int x,y;
+         while( true)
+         {
+            cout<<"Nhập vị trí x y: ";
+            cin>>x>>y;
+            if( x>=0 && x<3 && y>=0 && y<3 && board[x][y] == '_') break;
+            cout<<"Nhập lại"<<endl;
+         }
+         board[x][y] = 'o';
+         printBoard(board);
+      }
+   
 }
 
