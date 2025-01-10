@@ -12,7 +12,6 @@ duck = function( name = 'default ' )
 var d = new duck("donal");
 duck.prototype.leg = 2   ;
 
-p
 
 
 console.log(d.leg );
