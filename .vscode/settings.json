@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "add.h": "c",
-        "stdio.h": "c",
-        "iosfwd": "cpp",
-        "iostream": "cpp",
-        "new": "cpp"
-    }
-}
