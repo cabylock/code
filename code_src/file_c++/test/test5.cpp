@@ -7,9 +7,16 @@ using namespace std ;
 
 int main()
 {
-
-   cout<<"xin chào  ubuntu " ; 
-   return 0;
+   char c= '0xff'; 
+   if(c=='0xff')
+   {
+      printf("1");
+   }
+   else
+   {
+      printf("2");
+   }
+  
 }
 
 

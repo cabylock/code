@@ -5,7 +5,7 @@ public class imp
 {
     public static void main(String[] args) 
     {   
-        System.out.println("ế á đá"); 
+        System.out.println("xin xin  "); 
         String a = "hello";
         System.out.println(a);
 
