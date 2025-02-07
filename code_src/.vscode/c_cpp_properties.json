@@ -9,7 +9,7 @@
             "cStandard": "c17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64",
-            "compilerPath": "C:/mingw64/bin/g++.exe"
+            "compilerPath": "/usr/bin/g++"
         },
         {
             "name": "Win32",
