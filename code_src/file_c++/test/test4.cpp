@@ -96,7 +96,7 @@ int adj[100][100];
 
 int dijkstra(int start, int destination)
 {
-
+	return 1; 
 }
 
 

@@ -4,6 +4,7 @@ package abc;
 
    // private String name  ="z";
    // public static  int num = 2 ;  
+   public  static int n =2 ; 
    public static void main(String[] args) {
         
         motor b = new motor();
